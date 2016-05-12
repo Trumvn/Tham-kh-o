@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+  <PropertyGroup>
+    <verbosity>minimal</verbosity>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <SolutionName>AsiaMoneyer</SolutionName>
+    <SolutionFile Condition=" '$(SolutionFile)' == '' ">$(SolutionName).sln</SolutionFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Projects Include="AsiaMoneyer.WebApi"><Value>.csproj</Value></Projects>
+    <Projects Include="AsiaMoneyer.WebApp"><Value>.csproj</Value></Projects>
+  </ItemGroup>
+
+  <Target Name="VerifyProperties">
+    <!-- Verify that we have values for all required properties -->
+    <Error Condition=" '$(SolutionName)' == '' " Text="SolutionName is required." />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="VerifyProperties;BuildPackage;CopyOutput;" />
+
+  <Target Name="BuildPackage">
+    <Message Text="Solution: $(SolutionFile)" />    
+    <MSBuild Projects="$(SolutionFile)" ContinueOnError="false" Targets="Rebuild" Properties="Configuration=$(Configuration)" />
+    <Message Text="Project File = %(Projects.Identity)" />
+    <MSBuild Projects="%(Projects.Identity)\%(Projects.Identity)%(Projects.Value)" ContinueOnError="false" Targets="Package" Properties="Configuration=$(Configuration)" />
+  </Target>
+
+  <Target Name="CopyOutput">
+    <ItemGroup>
+      <PackagedFiles Include="%(Projects.Identity)\obj\$(Configuration)\Package\PackageTmp\**\*.*">
+        <Value>%(Projects.Identity)</Value>
+      </PackagedFiles>
+    </ItemGroup>
+    <RemoveDir Directories="$(DeployFolder)" />
+    <Copy SourceFiles="@(PackagedFiles)" DestinationFiles="@(PackagedFiles->'$(DeployFolder)\%(Value)\%(RecursiveDir)%(Filename)%(Extension)')"/>
+  </Target>
+  <Target Name="CopyResources">
+    <ItemGroup>
+      <GlobalIndexResourceFiles Include="index.html" />
+    </ItemGroup>
+    <Copy SourceFiles="@(GlobalIndexResourceFiles)" DestinationFiles="@(GlobalIndexResourceFiles->'$(DeployFolder)\%(Identity)')"/>
+  </Target>
+</Project>

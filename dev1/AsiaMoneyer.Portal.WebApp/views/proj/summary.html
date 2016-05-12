@@ -1,0 +1,117 @@
+<div class="ibox" ng-init="onload()">
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="m-b-md">
+                    <a href="" class="btn btn-white btn-xs pull-right">Edit project</a>
+
+                    <h2>{{proj.ProjectTitle}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <textarea class="in-line-input" ng-model="proj.Description" readonly placeholder="Project Summary" rows="3" style="resize:none;" />
+            </div>
+            <div class="col-lg-12">
+                <div class="media-body">
+                    Created by <strong>{{proj.Owner.FirstName}} </strong>{{proj.Owner.LastName}} - <small class="text-muted"> {{proj.CreatedDate  | timeAgo}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <small>Project completed in <strong>60%</strong>. Remaining close the project, sign a contract and invoice.</small>
+            </div>
+        </div>
+        <div class="row m-t-sm">
+            <div class="col-lg-12">
+                <div class="panel blank-panel ui-tab">
+
+                    <tabset>
+                        <tab heading="Last activity" active="tab.active" class="dsads">
+                            <ngspinner name="dashboardSpinner" show="loading"></ngspinner>
+                            <div class="feed-activity-list">
+                                <div class="feed-element" ng-repeat="auditLog in AuditLogs">
+                                    <a href="" class="pull-left">
+                                        <img alt="{{auditLog.User.Id}}" cl class="img-circle" src="{{auditLog.User.Photo}}">
+                                    </a>
+
+                                    <div class="media-body ">
+                                        <small class="pull-right">{{auditLog.EventDateUTC | timeAgo}}</small>
+                                        <strong>{{auditLog.User.FirstName}}</strong> {{auditLog.EventText}} <strong>{{auditLog.CustomText}}</strong> in <strong>{{auditLog.TableName}}</strong><br>
+                                    </div>
+                                </div>
+                                <!--<div class="feed-element">
+                                    <a href="" class="pull-left">
+                                        <img alt="image" class="img-circle" src="img/a3.jpg">
+                                    </a>
+
+                                    <div class="media-body ">
+                                        <small class="pull-right">2h ago</small>
+                                        <strong>Janet Rosowski</strong> add 1 photo on <strong>Monica Smith</strong>. <br>
+                                        <small class="text-muted">2 days ago at 8:30am</small>
+                                    </div>
+                                </div>
+                                <div class="feed-element">
+                                    <a href="" class="pull-left">
+                                        <img alt="image" class="img-circle" src="img/a4.jpg">
+                                    </a>
+
+                                    <div class="media-body ">
+                                        <small class="pull-right text-navy">5h ago</small>
+                                        <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                        <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                        <div class="actions">
+                                            <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
+                                            <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feed-element">
+                                    <a href="" class="pull-left">
+                                        <img alt="image" class="img-circle" src="img/a5.jpg">
+                                    </a>
+
+                                    <div class="media-body ">
+                                        <small class="pull-right">2h ago</small>
+                                        <strong>Kim Smith</strong> posted message on <strong>Monica Smith</strong> site. <br>
+                                        <small class="text-muted">Yesterday 5:20 pm - 12.06.2014</small>
+                                        <div class="well">
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                            Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feed-element">
+                                    <a href="" class="pull-left">
+                                        <img alt="image" class="img-circle" src="img/profile.jpg">
+                                    </a>
+
+                                    <div class="media-body ">
+                                        <small class="pull-right">23h ago</small>
+                                        <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                        <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                    </div>
+                                </div>
+                                <div class="feed-element">
+                                    <a href="" class="pull-left">
+                                        <img alt="image" class="img-circle" src="img/a7.jpg">
+                                    </a>
+
+                                    <div class="media-body ">
+                                        <small class="pull-right">46h ago</small>
+                                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </tab>
+                        
+                    </tabset>
+                    <button type="button" ng-show="loadmorebutton" ng-click="loadMore()" class="btn btn-link">Load More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

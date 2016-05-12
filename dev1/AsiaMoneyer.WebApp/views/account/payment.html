@@ -1,0 +1,42 @@
+﻿<div class="row" ng-init="onload()">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="text-muted small pull-right">Last modification: <i class="fa fa-clock-o"></i> 2:10 pm - 12.06.2014</span>
+                        <h2>Payment</h2>
+                        <p>
+                            All clients need to be verified before you can send email and set a project.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{subscription.Product.ProductTitle}}</h4>
+                        <dl class="small m-t-md">
+                            <dt>Description lists</dt>
+                            <dd>{{subscription.Product.ProductDesc}}</dd>
+                            <dt>Project</dt>
+                            <dd>{{subscription.Product.MaxProject}}</dd>
+                            <dt>Member</dt>
+                            <dd>{{subscription.Product.MaxUserMember}}</dd>
+                        </dl>
+                        <hr>
+                        <div>
+                            <div class="btn-group" ng-repeat="price in subscription.Product.ProductPrices">
+                                <button class="btn btn-primary btn-sm" ng-click="payInvoice(subscription.InvoiceId, price.Id)">${{price.Price}}<br />{{price.SubscriptionType.SubscriptionTypeTitle}}</button>&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox-footer">
+                <span class="pull-right">
+                    Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
+                </span>
+                The generated Lorem Ipsum is therefore always free
+            </div>
+        </div>
+    </div>
+</div>

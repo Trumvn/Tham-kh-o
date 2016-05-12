@@ -1,0 +1,70 @@
+<div class="ibox" ng-init="onload()">
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-lg-12">                
+                <div class="m-b-md">
+                    <div class="pull-right">
+                        <button type="button" class="btn-circle btn-sm btn-white" ng-click="openProperty(proj.Project.Id)"> <i class="fa fa-gear"></i> </button>
+                    </div>
+                    <div class="pull-right"><span>&nbsp;</span></div>
+                    <div class="pull-right" ng-switch="proj.Project.IsPrivate">
+                        <button type="button" class="btn-circle btn-sm btn-white" ng-switch-when="true"> <i class="fa fa-lock"></i> </button>
+                        <button type="button" class="btn-circle btn-sm btn-white" ng-switch-default> <i class="fa fa-unlock text-info"></i> </button>
+                    </div>
+                        <h2>{{proj.Project.ProjectTitle}}</h2>
+                        <div><span class="text-muted">by </span><strong>{{proj.Owner.FirstName}} </strong>{{proj.Owner.LastName}} <small class="text-muted"> - {{proj.Project.CreatedDate  | timeAgo}}</small></div>
+                        <div class="col-lg-12ss">
+                            <div class="team-members">
+                                <a href="#"><img alt="member" class="img-circle" src="img/a3.jpg"></a>
+                                <a href="#"><img alt="member" class="img-circle" src="img/a4.jpg"></a>
+                                <a href="#"><img alt="member" class="img-circle" src="img/a7.jpg"></a>
+                                <a href="#"><img alt="member" class="img-circle" src="img/a2.jpg"></a>
+                            </div>
+                            <h4></h4>
+                            <p>
+                                <textarea class="in-line-input" ng-model="proj.Project.ProjectDesc" readonly placeholder="" rows="3" style="resize:none;" />
+                            </p>
+                            <div>
+                                <span>{{Budget.Date | date:'MM/yyyy'}}&nbsp;</span>
+                                <div class="stat-percent">82%</div>
+                                <div class="progress progress-mini">
+                                    <div style="width: 82%;" class="progress-bar"></div>
+                                </div>
+                            </div>
+                            <div class="row  m-t-sm">
+                                <div class="col-sm-4">
+                                    <div class="font-bold"><i class="fa fa-warning text-warning"></i> {{AnalyseData.UncompletedTransaction.Count}}</div>                                    
+                                </div>
+                                <div class="col-sm-8 text-right">
+                                    <div class="font-bold">{{AnalyseData.UncompletedTransaction.Balance | isoCurrency:proj.Currency}}</div>                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row m-t-sm">
+            <div class="col-lg-12">
+                <h4>Recent Activity</h4>
+            </div>
+        </div>
+        <div class="row m-t-sm">
+            <div class="col-lg-12">
+                <div class="feed-activity-list">
+                    <div class="feed-element" ng-repeat="auditLog in AuditLogs">
+                        <a href="" class="pull-left">
+                            <img alt="{{auditLog.User.Id}}" class="img-circle" ng-show="auditLog.User.Photo != null" src="{{auditLog.User.Photo}}">
+                        </a>
+
+                        <div class="media-body ">
+                            <strong>{{auditLog.User.FirstName}}</strong> {{auditLog.EventText}} {{auditLog.CustomText | lowercase}} <strong>{{auditLog.Title}}</strong><br>
+                            <small class="">{{auditLog.EventDateUTC |date : "EEE dd/MM/yyyy"}} - {{auditLog.EventDateUTC | timeAgo}}</small>
+                        </div>
+                    </div>
+                </div>
+                <ngspinner name="dashboardSpinner" show="loading"></ngspinner>
+            </div>
+        </div>
+        <div class="row m-t-sm"><button type="button" ng-show="loadmorebutton" ng-click="loadMore()" class="btn btn-link">Load More</button></div>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3979F157-DEB0-4878-AB1D-4CEF6B5A1300}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AsiaMoneyer</RootNamespace>
+    <AssemblyName>AsiaMoneyer.EntityFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.LoggingFacility.3.3.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.Log4netIntegration, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core-log4net.3.3.3\lib\net45\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DbContextBase.cs" />
+    <Compile Include="EntityFramework\AsiaMoneyerDbContext.cs" />
+    <Compile Include="EntityFramework\AsiaMoneyerDbContextProvider.cs" />
+    <Compile Include="EntityFramework\Repositories\AccountRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\AuditLogRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\AutoMessagingDataMappingRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\AutoMessagingMessageRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\AutoMessagingSenderRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\AutoMessagingTemplateContentRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\AutoMessagingTemplateRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\AutoMessagingTypeRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\CategoryBudgetRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\CategoryRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\FaqRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\InvoiceRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\PaymentMethodRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductPriceRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProjectRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EntityFramework\Repositories\AsiaMoneyerRepositoryBase.cs" />
+    <Compile Include="EntityFramework\Repositories\RecurringTransactionRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\SubscriptionRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\SubscriptionTypeRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\SysSettingRepositoty.cs" />
+    <Compile Include="EntityFramework\Repositories\TargetMarketRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\TransactionRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserCommentRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserPhotoRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ClientRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserRepository.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AsiaMoneyer.Base\AsiaMoneyer.Base.csproj">
+      <Project>{13f9bf8c-9bef-4b6c-afab-aca9ae57e7ec}</Project>
+      <Name>AsiaMoneyer.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.Commons\AsiaMoneyer.Commons.csproj">
+      <Project>{b63a038f-7b97-4af9-83c2-2a5026154cbd}</Project>
+      <Name>AsiaMoneyer.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.Core\AsiaMoneyer.Core.csproj">
+      <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
+      <Name>AsiaMoneyer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.Entities\AsiaMoneyer.Entities.csproj">
+      <Project>{17560453-6560-4e64-ae7a-668ed4034f35}</Project>
+      <Name>AsiaMoneyer.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

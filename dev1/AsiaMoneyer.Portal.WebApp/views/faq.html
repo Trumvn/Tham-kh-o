@@ -1,0 +1,65 @@
+<div>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-4">
+            <h2>FAQ</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="active">
+                    <strong>Frequently asked questions</strong>
+                </li>
+            </ol>
+        </div>
+        <div class="col-sm-8">
+            <div class="title-action">
+                <a href="" class="btn btn-primary btn-sm" ng-click="createNewQuestion()">Add question</a>
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInRight">
+
+            <div class="ibox-content m-b-sm border-bottom">
+                <div class="text-center p-lg">
+                    <h2>If you don't find the answer to your question</h2>
+                    <span>add your question by selecting </span>
+                    <button title="Create new cluster" class="btn btn-primary btn-sm" ng-click="createNewQuestion()"><i class="fa fa-plus"></i> <span class="bold">Add question</span></button>
+                    button
+                </div>
+            </div>
+            <ngspinner name="dashboardSpinner" show="loading"></ngspinner>
+            <div class="faq-item" ng-repeat="faqQuestion in Faqs">
+                <div class="row">
+                    <div class="col-md-7">
+                        <a ng-click="faqQuestion.IsCollapse = !faqQuestion.IsCollapse" class="faq-question">{{faqQuestion.Question}}</a>
+                        <small>Added by <strong>{{faqQuestion.FullName}}</strong> <i class="fa fa-clock-o"></i> {{ faqQuestion.CreatedDate | date:'dd/MM/yyyy' }}</small>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="small font-bold">{{faqQuestion.AssistantName}}</span> &nbsp; &nbsp;
+
+                        <div class="tag-list">
+                            <span ng-repeat="tag in faqQuestion.Tags.split(',')" style="margin: 0 3px;" class=" tag-item">{{tag}}</span>
+                         </div>
+                     </div>
+                            <div class="col-md-2 text-right">
+                                <span class="small font-bold">Voting </span><br/>
+                                {{faqQuestion.Voting}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div collapse="faqQuestion.IsCollapse" class="panel-collapse collapse">
+                                    <div class="faq-answer">
+                                        <p>{{faqQuestion.Answer}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

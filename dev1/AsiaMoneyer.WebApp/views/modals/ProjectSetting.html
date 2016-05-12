@@ -1,0 +1,80 @@
+﻿<div class="inmodal" ng-init="onload()">
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Project Information">
+            <md-content class="md-padding">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Project Name</label>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" ng-model="projectDto.ProjectTitle">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Description</label>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" ng-model="projectDto.ProjectDesc">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Currency</label>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" ng-model="projectDto.Currency">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Start Month</label>
+
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" ng-model="projectDto.FinanceYearStartMonth">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-4 col-lg-8">
+                            <input icheck type="checkbox" ng-model="projectDto.IsPrivate"><i></i> Private Project
+                        </div>
+                    </div>
+                </form>
+            </md-content>
+        </md-tab>
+        <md-tab label="Members">
+            <md-content class="md-padding">
+                <div class="feed-activity-list">
+                    <div class="feed-element" ng-repeat="member in Members">
+                        <a href="" class="pull-left">
+                            <img alt="{{member.Client.User.Id}}" class="img-circle" ng-src="{{member.Client.User.Photo}}">
+                        </a>
+
+                        <div class="media-body ">
+                            <small class="pull-right text-navy">{{member.Client.User.JoinDate | timeAgo}}</small>
+                            <strong>{{member.Client.FirstName}} </strong>{{member.Client.LastName}}. <br>
+                            <small class="text-muted">Started following {{member.Client.User.JoinDate | date: "MM/dd/yyyy"}}</small>
+                            <div class="actions" ng-if="member.PermissionId != 502">
+                                <a class="btn btn-xs btn-white" ng-click="removeMember(member.Id)"><i class="fa fa-times"></i> Remove </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-form">
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Add New Member Email" ng-model="invitedMemberEmail">
+                        </div>
+                        <div class="text-right">
+                            <md-button ng-click="inviteMember()">Add</md-button>
+                        </div>
+                    </form>
+                </div>
+            </md-content>
+        </md-tab>
+    </md-tabs>
+    <div class="modal-footer">
+        <div class="col-sm-2 col-xs-3">
+            <button type="button" class="btn btn-danger" ng-click="confirmDeleteProject(projectDto)">Delete</button>
+        </div>
+        <div class="col-sm-10 col-xs-9">
+            <button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="saveProject()">Save Project</button>
+        </div>
+        </div>
+</div>
+

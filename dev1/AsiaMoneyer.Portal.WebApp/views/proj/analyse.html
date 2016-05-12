@@ -1,0 +1,252 @@
+<div ng-init="onload()">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <div class="pull-right text-right">
+                        <small>2015 | <strong>2016</strong> | 2017</small>
+                    </div>
+                    <h3 class="font-bold no-margins">
+                        Analyse
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div>
+                        <div class="pull-right text-right">
+                            <div class="btn-group">
+                                <button ng-class="{'btn btn-xs btn-primary': CashFlowChartTypeReport, 'btn btn-xs btn-white': !CashFlowChartTypeReport}" type="button" ng-click="changeCashFlowChartType(true)">Report</button>
+                                <button ng-class="{'btn btn-xs btn-primary': !CashFlowChartTypeReport, 'btn btn-xs btn-white': CashFlowChartTypeReport}" type="button" ng-click="changeCashFlowChartType(false)">Estimate</button>
+                            </div>
+                        </div>
+
+                        <h1 class="m-b-xs">$ 50,992</h1>
+
+                        <h3 class="font-bold no-margins">
+                            Half-year revenue margin
+                        </h3>
+                        <small>&nbsp;</small>
+                    </div>
+                    <div>
+                        <div google-chart chart="chartObject" style="height:560px; width:100%;"></div>
+                    </div>
+                    <div class="m-t-md">
+                        <small>
+                            <strong>Analysis:</strong> The value has been changed over time, and estimation of year-end balance reached a level over <strong>$50,000</strong>.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-right">{{AnalyseData.UncompletedTransaction.Count}}</span>
+                    <h5>Uncompleted Transactions</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins text-primary">{{AnalyseData.UncompletedTransaction.Balance  | isoCurrency:AnalyseData.Currency}}</h1>
+
+                    <div class="stat-percent font-bold text-navy"></div>
+                    <small>From <strong>{{ AnalyseData.FinanceYearFromDate | date:"MMM yyyy"}}</strong> to <strong>{{ AnalyseData.AnalyseDate | date:"MMM yyyy"}}</strong></small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-info pull-right">{{AnalyseData.UpcomingIncome.Count}}</span>
+                    <h5>Upcoming Income</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins text-info">{{AnalyseData.UpcomingIncome.Balance  | isoCurrency:AnalyseData.Currency}}</h1>
+
+                    <div class="stat-percent font-bold text-info"></div>
+                    <small>From <strong>{{ AnalyseData.AnalyseDate | date:"MMM yyyy"}}</strong> to <strong>{{ AnalyseData.FinanceYearEndDate | date:"MMM yyyy"}}</strong></small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-warning pull-right">{{AnalyseData.UpcomingExpense.Count}}</span>
+                    <h5>Upcoming Expense</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins text-warning">{{AnalyseData.UpcomingExpense.Balance  | isoCurrency:AnalyseData.Currency}}</h1>
+
+                    <div class="stat-percent font-bold text-warning"></div>
+                    <small>From <strong>{{ AnalyseData.AnalyseDate | date:"MMM yyyy"}}</strong> to <strong>{{ AnalyseData.FinanceYearEndDate | date:"MMM yyyy"}}</strong></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <div class="pull-right">
+                        <div class="dropdown " dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle href>
+                                {{CategoryFilter.FilterMonth + 1}}/{{CategoryFilter.FilterYear}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div date-picker ng-model="CategoryFilter.FilterDate" view="month" min-view="month" auto-close="false" format="dd/MM/yyyy"></div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="" ng-click="setCategoryFilterDate(0, 2016)">2016</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pull-right">&nbsp;in&nbsp;</div>
+                    <div class="pull-right">                        
+                        <div class="dropdown " dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle href ng-switch="CategoryFilter.IsIncome">
+                                All accounts
+                            </a>
+                            <ul class="dropdown-menu m-t-xs">
+                                <li><a href="" ng-click="setCategoryFilterAccount(null)">All accounts</a></li>
+                                <li class="divider"></li>
+                                <li ng-repeat="acc in Accounts track by acc.Id"><a ng-click="setCategoryFilterAccount(acc.Id)">{{acc.AccountTitle}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pull-right">Filter:&nbsp;</div>
+                    <h5>Category</h5>
+                    </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-6"><div google-chart chart="chartByCategoryExpenseObject" style="height:300px; width:100%;"></div></div>
+                        <div class="col-lg-6"><div google-chart chart="chartByCategoryIncomeObject" style="height:300px; width:100%;"></div></div>                        
+                    </div>
+
+                    <div class="stat-percent font-bold text-warning">16% <i class="fa fa-level-up"></i></div>
+                    <small><strong>Expense: </strong>Compare last month</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <div class="pull-right">
+                        <div class="dropdown " dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle href>
+                                {{AccountFilter.FilterMonth + 1}}/{{AccountFilter.FilterYear}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div date-picker ng-model="AccountFilter.FilterDate" view="month" min-view="month" auto-close="false" format="dd/MM/yyyy"></div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="" ng-click="setAccountFilterDate(0, 2016)">2016</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pull-right">Filter:&nbsp;</div>
+                    <h5>Account</h5>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <div google-chart chart="chartByAccountObject" style="height:300px; width:100%;"></div>
+                    </div>
+                    <div class="stat-percent font-bold text-warning">16% <i class="fa fa-level-up"></i></div>
+                    <small>New orders</small>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <div class="pull-right">
+                        <div class="dropdown " dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle href>
+                                {{SelectedMonthYearForJARSAnalyse | date:'MMM yyyy'}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div date-picker ng-model="SelectedMonthYearForJARSAnalyse" view="month" min-view="month" auto-close="false" format="dd/MM/yyyy"></div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="" ng-click="setJARSAnalyseDate(0, 2016)">2016</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pull-right">Filter:&nbsp;</div>
+                    <h5>JARS - Analyse</h5>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <div google-chart chart="chartJarsAnalyseObject" style="height:300px; width:100%;"></div>
+                    </div>
+
+                    <div class="stat-percent font-bold text-info">{{ TotalMonthlyIncome | number : 0}}</div>
+                    <small>Total monthly income in <strong>{{ SelectedMonthYearForJARSAnalyse | date : 'MMM yyyy'}}</strong></small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div>
+                        <div class="pull-right text-right">
+                            <div class="dropdown " dropdown>
+                                <a class="dropdown-toggle" dropdown-toggle href>
+                                    <span ng-show="SelectedCategory == null">None category</span>{{SelectedCategory.CategoryTitle}}
+                                </a>
+                                <ul class="dropdown-menu m-t-xs">
+                                    <li ng-repeat="cat in (Categories)  track by cat.Id"><a href="" ng-click="setSelectedCategory(cat)">{{cat.CategoryTitle}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pull-right">Filter:&nbsp;</div>
+                        <h1 class="m-b-xs">$ 50,992</h1>
+
+                        <h3 class="font-bold no-margins">
+                            Half-year revenue margin
+                        </h3>
+                        <small>&nbsp;</small>
+                    </div>
+                    <div>
+                        <div google-chart chart="chartCategoryBudget" style="height:560px; width:100%;"></div>
+                    </div>
+                    <div class="m-t-md">
+                        <small class="pull-right">
+                            <i class="fa fa-clock-o"> </i>
+                            Update on 16.07.2015
+                        </small>
+                        <small>
+                            <strong>Analysis of sales:</strong> The value has been changed over time, and last month reached a level over $50,000.
+                        </small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

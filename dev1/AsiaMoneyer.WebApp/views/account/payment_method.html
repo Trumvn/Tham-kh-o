@@ -1,0 +1,37 @@
+﻿<div class="row" ng-init="onload()">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="text-muted small pull-right">Last modification: <i class="fa fa-clock-o"></i> 2:10 pm - 12.06.2014</span>
+                        <h2>Payment Method</h2>
+                        <p>
+                            All clients need to be verified before you can send email and set a project.
+                        </p>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="pmethod in PaymentMethods">
+                    <div class="col-md-12">
+                        <h4>{{pmethod.PaymentMethodTitle}}</h4>
+                        <dl class="small m-t-md">                            
+                            <dd>{{pmethod.PaymentMethodDesc}}</dd>
+                        </dl>
+                        <hr>
+                        <div>
+                            <div class="btn-group">
+                                <button class="btn btn-primary btn-sm" ng-click="purchase(pmethod.Id)">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox-footer">
+                <span class="pull-right">
+                    Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
+                </span>
+                The generated Lorem Ipsum is therefore always free
+            </div>
+        </div>
+    </div>
+</div>

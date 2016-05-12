@@ -1,0 +1,5 @@
+D:\Work\dev1\AsiaMoneyer.Infrastructure\bin\Debug\AsiaMoneyer.Infrastructure.dll
+D:\Work\dev1\AsiaMoneyer.Infrastructure\bin\Debug\AsiaMoneyer.Infrastructure.pdb
+D:\Work\dev1\AsiaMoneyer.Infrastructure\obj\Debug\AsiaMoneyer.Infrastructure.dll
+D:\Work\dev1\AsiaMoneyer.Infrastructure\obj\Debug\AsiaMoneyer.Infrastructure.pdb
+D:\Work\dev1\AsiaMoneyer.Infrastructure\obj\Debug\AsiaMoneyer.Infrastructure.csprojResolveAssemblyReference.cache

@@ -1,0 +1,92 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Add New Question</h4>
+        <!--<ngspinner name="dashboardSpinner" show="loading"></ngspinner>-->
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="myForm" novalidate>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Your Name</label>
+                <div class="col-lg-8">
+                    <input type="text" name="name" class="form-control" ng-model="QuestionDto.FullName" required placeholder="My FullName">
+                    <span style="color: red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+                        <span ng-show="myForm.name.$error.required">Username is required.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Your Email</label>
+                <div class="col-lg-8">
+                    <input type="email" name="email" class="form-control" ng-model="QuestionDto.EmailAddress" required placeholder="myfullname@testing.com">
+                    <span style="color: red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                        <span ng-show="myForm.email.$error.required">Email is required.</span>
+                        <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Your Question</label>
+
+                <div class="col-lg-8">
+                    <textarea name="question" class="form-control" ng-model="QuestionDto.Question" rows="5" required placeholder="What is Frequency Asked Question"></textarea>
+                    <span style="color: red" ng-show="myForm.question.$dirty && myForm.question.$invalid">
+                        <span ng-show="myForm.question.$error.required">Question is required.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Assistant Name</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" ng-model="QuestionDto.AssistantName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Answer</label>
+
+                <div class="col-lg-8">
+                    <div summernote class="summernote" ng-model="QuestionDto.Answer">
+                        <h3>Hello Jonathan! </h3>
+                        dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the industry's</strong> standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                        <br />
+                    </div>
+                </div>
+            </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Tags</label>
+
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" ng-model="QuestionDto.Tags">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Voting</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" ng-model="QuestionDto.Voting">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Display Order</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" ng-model="QuestionDto.DisplayOrder">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-4 col-lg-8">
+                        <input icheck type="checkbox" ng-model="QuestionDto.IsPublish"><i></i> Publish
+                    </div>
+                </div>
+</form>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="SubmitQuestion()"
+                ng-disabled="myForm.name.$dirty && myForm.name.$invalid
+                ||myForm.question.$dirty && myForm.question.$invalid
+                || myForm.email.$dirty && myForm.email.$invalid">
+            Submit
+        </button>
+    </div>
+</div>
+

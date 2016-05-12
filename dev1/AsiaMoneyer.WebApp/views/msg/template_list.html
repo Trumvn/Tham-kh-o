@@ -1,0 +1,52 @@
+<div ng-init="onload()">
+    <div class="mail-box-header">
+
+        <form method="get" action="index.html" class="pull-right mail-search">
+            <div class="input-group">
+                <input type="text" class="form-control input-sm" name="search" placeholder="Search email">
+
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </form>
+        <h2>
+            {{TemplateName}} ({{Total}})
+        </h2>
+
+        <div class="mail-tools tooltip-demo m-t-md">
+            <div class="btn-group pull-right">
+                <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+            </div>
+            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh"><i class="fa fa-refresh"></i> Refresh</button>
+            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Add new" ui-sref="app.msg.tedit({tid:'{{TemplateId}}'})"><i class="fa fa-plus"></i></button>
+            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i></button>
+
+        </div>
+    </div>
+    <div class="mail-box">
+
+        <table class="table table-hover table-mail">
+            <tbody>
+                <tr class="read" ng-repeat="message in TemplateContents">
+                    <td class="check-mail">
+                        <input icheck type="checkbox" ng-model="message.Checked">
+                    </td>
+                    <td class="mail-ontact"><a ui-sref="app.msg.tview({Id:'{{message.Id}}'})">{{message.MessagingFromName}}</a></td>
+                    <td class="mail-subject"><a ui-sref="app.msg.tview({Id:'{{message.Id}}'})">{{message.MessagingSubject}}</a></td>
+                    <td class=""><i ng-class="{ 'fa fa-circle text-navy': message.IsPublish, '': !message.IsPublish }"></i></td>
+                    <td class="text-right mail-date">{{message.FromDate | date: 'MM/dd/yyyy'}}</td>
+                    <td class="text-right mail-date">{{message.EndDate | date: 'MM/dd/yyyy'}}</td>
+                </tr>               
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+

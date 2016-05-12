@@ -1,0 +1,53 @@
+﻿<div class="row" ng-init="onload()">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="pull-right"><button class="btn btn-primary btn-sm" ng-click="goUpgradeAccount()"><i class="fa fa-edit"></i> Edit</button></span>
+                        <h2>Profile</h2>
+                        <hr>
+                        <dl class="small m-t-md">
+                            <dt>Email:</dt>
+                            <dd>dquanguy@gmail.com</dd>
+                            <dt>Timezone:</dt>
+                            <dd>Europe/London</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-12">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="text-muted small pull-right"><button class="btn btn-primary btn-sm" ng-click="goPayment(CurrentSubscription.NextInvoiceId)" ng-if="CurrentSubscription.NextInvoiceId != null"><i class="fa fa-arrow-right"></i> Pay</button>&nbsp;<button class="btn btn-info btn-sm" ng-if="CurrentSubscription.CanUpgrade" ng-click="goUpgradeAccount()"><i class="fa fa-thumbs-up"></i> Upgrade</button></span>
+                        <h2>Account</h2>
+                        <hr>
+                        <dl class="small m-t-md">
+                            <dt>Product: {{CurrentSubscription.ProductId}}</dt>
+                            <dd>{{CurrentSubscription.Product.ProductTitle}}</dd>
+                            <dd>{{CurrentSubscription.SubscriptionType.SubscriptionTypeTitle}}</dd>
+                            <dt>Valid From</dt>
+                            <dd>{{CurrentSubscription.ValidDate | date: 'dd/MM/yyyy'}}</dd>
+                            <dt>Expired Date</dt>
+                            <dd>{{CurrentSubscription.ExpiredDate | date: 'dd/MM/yyyy'}}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="text-muted small pull-right"><button class="btn btn-danger btn-sm" ng-click="confirmDeleteAccount()"><i class="fa fa-times"></i> Delete</button></span>
+                        <h2>Delete Your Account</h2>
+                        <small class="text-muted small">Created on: <i class="fa fa-clock-o"></i> 2:10 pm - 12.06.2014</small>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox-footer">
+                <span class="pull-right">
+                    Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
+                </span>
+                The generated Lorem Ipsum is therefore always free
+            </div>
+        </div>
+    </div>
+</div>

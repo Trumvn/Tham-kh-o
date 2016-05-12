@@ -1,0 +1,5 @@
+D:\Work\dev1\AsiaMoneyer.Commons\bin\Debug\AsiaMoneyer.Commons.dll
+D:\Work\dev1\AsiaMoneyer.Commons\bin\Debug\AsiaMoneyer.Commons.pdb
+D:\Work\dev1\AsiaMoneyer.Commons\obj\Debug\AsiaMoneyer.Commons.dll
+D:\Work\dev1\AsiaMoneyer.Commons\obj\Debug\AsiaMoneyer.Commons.pdb
+D:\Work\dev1\AsiaMoneyer.Commons\obj\Debug\AsiaMoneyer.Commons.csprojResolveAssemblyReference.cache

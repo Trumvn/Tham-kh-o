@@ -1,0 +1,69 @@
+﻿<div class="inmodal" ng-init="onload()">
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Information">
+            <md-content class="md-padding">
+                <form class="form-horizontal">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a1.jpg">
+
+                            <div class="m-t-xs font-bold">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3><strong>{{UserProfile.FirstName}} </strong>{{UserProfile.LastName}}&nbsp;</h3>
+                        <p>Username: {{UserProfile.UserName}}</p>
+                        <p>UserID: {{UserProfile.UserId}}</p>
+                        <p>Email: {{UserProfile.EmailAddress}}</p>
+                        <p>Phone: {{UserProfile.PhoneNumber}}</p>
+                        <p>Birthday: <i>{{UserProfile.Birthday | date: 'MM/dd/yyyy'}}</i></p>
+                        <p>Create/Join: <i>{{UserProfile.CreatedDate | date: 'MM/dd/yyyy'}}</i></p>
+                        <p><span class="label label-primary" ng-show="UserProfile.IsActive">Active</span></p>
+                        <p ng-show="UserProfile.IsDeleted">
+                            <span class="label label-warning">Removed</span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </md-content>
+        </md-tab>
+        <md-tab label="Project">
+            <md-content class="md-padding">
+                <div class="full-height-scroll" full-scroll>
+                    <strong>Last activity</strong>
+                    <ul class="list-group clear-list">
+                        <li class="list-group-item fist-item">
+                            <span class="pull-right"> 09:00 pm </span>
+                            Please contact me
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> 10:16 am </span>
+                            Sign a contract
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> 08:22 pm </span>
+                            Open new shop
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> 11:06 pm </span>
+                            Call back to Sylvia
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> 12:00 am </span>
+                            Write a letter to Sandra
+                        </li>
+                    </ul>
+                    <strong>Notes</strong>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+            </md-content>
+        </md-tab>
+    </md-tabs>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+    </div>
+</div>
+

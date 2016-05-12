@@ -1,0 +1,7 @@
+D:\Work\dev1\AsiaMoneyer.Entities\bin\Debug\AsiaMoneyer.Entities.dll
+D:\Work\dev1\AsiaMoneyer.Entities\bin\Debug\AsiaMoneyer.Entities.pdb
+D:\Work\dev1\AsiaMoneyer.Entities\bin\Debug\AsiaMoneyer.Base.dll
+D:\Work\dev1\AsiaMoneyer.Entities\bin\Debug\AsiaMoneyer.Base.pdb
+D:\Work\dev1\AsiaMoneyer.Entities\obj\Debug\AsiaMoneyer.Entities.csprojResolveAssemblyReference.cache
+D:\Work\dev1\AsiaMoneyer.Entities\obj\Debug\AsiaMoneyer.Entities.dll
+D:\Work\dev1\AsiaMoneyer.Entities\obj\Debug\AsiaMoneyer.Entities.pdb

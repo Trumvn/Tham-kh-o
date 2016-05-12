@@ -1,0 +1,108 @@
+<div class="row wrapper border-bottom white-bg page-heading" ng-init="onload()">
+    <div class="col-lg-10">
+        <h2>My Dashboard&nbsp;</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ng-click="go2list(Project.Id)"><span class="nav-label active"><i class="fa fa-caret-right"></i>Project</span></a>
+            </li>
+            <li>
+                <a ng-click="go2Category(Project.Id)"><span class="nav-label"><i class="fa fa-caret-right"></i>Archive</span></a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <ngspinner name="dashboardSpinner" show="loading"></ngspinner>
+        <div class="col-lg-4" ng-repeat="proj in Projects">
+            <div class="ibox">
+                <div class="ibox-title">                    
+                    <div class="pull-right">
+                        <div class="dropdown " dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle href>
+                                <button type="button" class="btn-circle btn-sm btn-white"> <i class="fa fa-ellipsis-h"></i> </button>
+                            </a>
+                            <ul class="dropdown-menu m-t-xs">
+                                <li>
+                                    <a ui-sref="app.project.list({id:'{{proj.Id}}'})">Open</a>
+                                </li>
+                                <li >                                    
+                                    <a ng-click="archiveProject(proj)" ng-switch="proj.IsArchived">
+                                        <span ng-switch-when="false">Set Archived</span>
+                                        <span ng-switch-default>Set Un-Archived</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ng-click="setFavorite(proj.Id)">Set Favorite</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a ng-click="confirmExportCsv(proj)">Export CSV...</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="openProperty(proj.Id)">Property...</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="dropdown " dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle href>
+                                <span ng-show="proj.User.HighlightColor != null" class="fa fa-circle-thin" ng-style="{'font-size': '2.3em', 'color': proj.User.HighlightColor }">&nbsp;</span>
+                                <span ng-show="proj.User.HighlightColor == null" class="fa fa-circle-thin" style="color: #eee; font-size: 2.3em;">&nbsp;</span>
+                            </a>
+                            <ul class="dropdown-menu m-t-xs">
+                                <li><a href="" ng-click="setHighlightColor(proj, '#eee')"><span class="fa fa-circle" style="color: #eee; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(proj, '#ff0000')"><span class="fa fa-circle" style="color: red; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(proj, 'green')"><span class="fa fa-circle" style="color: green; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(proj, '#bd4ab4')"><span class="fa fa-circle" style="color: #bd4ab4; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(proj, '#f2b739')"><span class="fa fa-circle" style="color: #f2b739; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(proj, '#f5f764')"><span class="fa fa-circle" style="color: #f5f764; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(proj, '#1ab394')"><span class="fa fa-circle" style="color: #1ab394; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(proj, '#17b6c0')"><span class="fa fa-circle" style="color: #17b6c0; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(proj, '#4b71aa')"><span class="fa fa-circle" style="color: #4b71aa; font-size: 2.3em;">&nbsp;</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h5><input class="in-line-input" ng-model="proj.ProjectTitle" readonly placeholder="Project Title" /></h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="team-members">
+                        <a href="#"><img alt="member" class="img-circle" src="img/a3.jpg"></a>
+                        <a href="#"><img alt="member" class="img-circle" src="img/a4.jpg"></a>
+                        <a href="#"><img alt="member" class="img-circle" src="img/a7.jpg"></a>
+                        <a href="#"><img alt="member" class="img-circle" src="img/a2.jpg"></a>
+                    </div>
+                    <h4></h4>
+                    <p>
+                        <textarea class="in-line-input" ng-model="proj.Description" readonly placeholder="" rows="3" style="resize:none;" />
+                    </p>
+                    <div>
+                        <span>{{Budget.Date | date:'MM/yyyy'}}</span>
+                        <div class="stat-percent">82%</div>
+                        <div class="progress progress-mini">
+                            <div style="width: 82%;" class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="row  m-t-sm">
+                        <div class="col-sm-4">
+                            <div class="font-bold">UNCLEAR</div>
+                            {{Budget.UnclearItems}}
+                        </div>
+                        <div class="col-sm-8 text-right">
+                            <div class="font-bold">AMOUNT</div>
+                            {{Budget.Amount | isoCurrency:proj.Currency}} <i class="fa fa-level-up text-navy"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        by <strong>{{proj.Owner.FirstName}} </strong>{{proj.Owner.LastName}} - <small class="text-muted"> {{proj.CreatedDate  | timeAgo}}</small>
+                    </div>
+                    <div class="media-body" ng-switch="proj.IsPrivate">
+                        <span ng-switch-when="true" class="text-muted"><i class="fa fa-lock"></i> <small>Only you can see this project</small></span>
+                        <span ng-switch-default class="text-muted"><i class="fa fa-unlock text-info"></i> <small>Shared to all memebers</small></span>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

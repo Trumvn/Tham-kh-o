@@ -1,0 +1,184 @@
+﻿
+    <div class="row" ng-init="onload()">
+        <div ng-class="{'col-sm-8': SelectedCategory != null, 'col-sm-12': SelectedCategory == null}">
+            <div class="ibox">
+                <ngspinner name="dashboardSpinner" show="loading"></ngspinner>
+                <form name="ProjectCategoryListForm" class="form-group" auto-save="partialSave()">
+                    <div id="ibox1">
+                        <div class="ibox-title">
+                            <span class="text-muted small pull-right">Found {{length}} items</span>
+                            <a href="" class="btn btn-primary btn-xs" ng-click="addNewCategoryIncome()">Add Income</a>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+
+                                <table class="table table-hover issue-tracker">
+                                    <tbody>
+                                        <tr ng-repeat="catDto in Categories | filter: {IsIncome: true}">
+                                            <td class="issue-info">
+                                                <input class="in-line-input" ng-model="catDto.CategoryTitle" ng-click="selectCategory(catDto)">
+                                            </td>
+                                            <td class="text-right">
+                                                <span ng-if="catDto.CurrentBudget.BudgetAmount > 0">{{catDto.CurrentBudget.BudgetAmount | isoCurrency:catDto.CurrentBudget.Currency}} {{catDto.CurrentBudget.TimeFrequency.TimeFrequencyTitle}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="label label-white" ng-show="catDto.IsClosed == true">Disable</span>
+                                            </td>
+                                            <td class="text-right">
+                                                <span ng-show="catDto.HighlightColor != null" class="fa fa-circle" ng-style="{'font-size': '2.3em', 'color': catDto.HighlightColor }">&nbsp;</span>
+                                                <span ng-show="catDto.HighlightColor == null" class="fa fa-circle-thin" style="color: gray; font-size: 2.3em;">&nbsp;</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ibox2">
+                        <div class="ibox-title">
+                            <span class="text-muted small pull-right">Found {{Categories.length-length}} items</span>
+                            <a href="" class="btn btn-danger btn-xs" ng-click="addNewCategoryExpense()">Add Expense</a>
+                        </div>
+                        <div class="ibox-content">
+                          
+                           <div class="table-responsive">
+
+                                <table class="table table-hover issue-tracker">
+                                    <tbody>
+                                        <tr ng-repeat="catDto in Categories | filter: {IsIncome: false}">
+                                            <td class="issue-info">
+                                                <input class="in-line-input" ng-model="catDto.CategoryTitle" ng-click="selectCategory(catDto)">
+                                            </td>
+                                            <td class="text-right">
+                                                <span ng-if="catDto.CurrentBudget.BudgetAmount > 0">{{catDto.CurrentBudget.BudgetAmount | isoCurrency:catDto.CurrentBudget.Currency}} {{catDto.CurrentBudget.TimeFrequency.TimeFrequencyTitle}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="label label-white" ng-show="catDto.IsClosed == true">Disable</span>
+                                            </td>
+                                            <td class="text-right">
+                                                <span ng-show="catDto.HighlightColor != null" class="fa fa-circle" ng-style="{'font-size': '2.3em', 'color': catDto.HighlightColor }">&nbsp;</span>
+                                                <span ng-show="catDto.HighlightColor == null" class="fa fa-circle-thin" style="color: gray; font-size: 2.3em;">&nbsp;</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-4" ng-show="SelectedCategory != null">
+            <div class="ibox ">
+                <div class="ibox-title fix-dt-top-pj-form">
+                    <div class="pull-left">
+                        <div class="dropdown " dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle href>
+                                <span ng-show="SelectedCategory.HighlightColor != null" class="fa fa-circle" ng-style="{'font-size': '2.3em', 'color': SelectedCategory.HighlightColor }">&nbsp;</span>
+                                <span ng-show="SelectedCategory.HighlightColor == null" class="fa fa-circle-thin" style="color: gray; font-size: 2.3em;">&nbsp;</span>
+                            </a>
+                            <ul class="dropdown-menu m-t-xs">
+                                <li><a href="" ng-click="setHighlightColor(SelectedCategory, null)"><span class="fa fa-circle-thin" style="color: gray; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(SelectedCategory, '#ff0000')"><span class="fa fa-circle" style="color: red; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(SelectedCategory, 'green')"><span class="fa fa-circle" style="color: green; font-size: 2.3em;">&nbsp;</span></a></li>
+                                <li><a href="" ng-click="setHighlightColor(SelectedCategory, '#0000ff')"><span class="fa fa-circle" style="color: blue; font-size: 2.3em;">&nbsp;</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pull-right close-ib-right">
+                        <span class="text-muted" ng-click="SelectedCategory = null"><i class="fa fa-times"></i></span>
+                    </div>
+                    <div class="pull-right">
+                        <div class="dropdown " dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle href>
+                                <button type="button" class="btn-circle btn-sm btn-white"> <i class="fa fa-cog"></i> </button>
+                            </a>
+                            <ul class="dropdown-menu m-t-xs">
+                                <li ng-switch="SelectedCategory.IsClosed">
+                                    <a ng-switch-when="false" ng-click="closeCategory(SelectedCategory, true)">Disable</a>
+                                    <a ng-switch-when="true" ng-click="closeCategory(SelectedCategory, false)">Enable</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a ng-click="confirmDelete(SelectedCategory)">Delete...</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="m-b-lg">
+                        <form name="ProjectCategoryDetailForm" class="form-group"
+                              ng-submit="saveCategory()"
+                              auto-save="partialSave()">
+
+                            <div class="form-group">
+                                <input type="text" placeholder="Enter title" class="form-control" ng-model="SelectedCategory.CategoryTitle">
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="5" placeholder="Enter description" class="form-control" ng-model="SelectedCategory.CategoryDescription"></textarea>
+                            </div>
+                        </form>
+
+                        <div class="form-group">
+                            <div class="feed-activity-list">
+                                <div class="feed-element" ng-show="SelectedCategory != null && SelectedCategory.Id != null">
+                                    <div class="media-body">
+                                        <div class="pull-right text-warning"> <a href ng-click="createBudget(SelectedCategory.Id)"><span class="fa fa-plus-circle"></span></a></div>
+                                        <strong>Budget</strong>
+                                    </div>
+                                </div>
+                                <ngspinner name="budgetLoadingSpinner" show="budgetLoading"></ngspinner>
+                                <div class="feed-element" ng-repeat="budgetDto in Budgets">
+                                    <div class="media-body">
+                                        <div class="pull-right text-navy"> <a href ng-click="confirmRemoveBudget(budgetDto.Id)"><span class="fa fa-minus-circle"></span></a></div>
+                                        <strong>{{budgetDto.BudgetAmount |  isoCurrency:budgetDto.Currency}}</strong>&nbsp;{{budgetDto.TimeFrequency.TimeFrequencyTitle}}<br>
+                                        <small class="text-muted">{{budgetDto.StartDate | date:"MMM yyyy"}} - {{budgetDto.EndDate  | date:"MMM yyyy"}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="client-detail">
+                        <div class="full-height-scroll" full-scroll>
+                            <div class="feed-activity-list">
+                                <div class="feed-element">
+                                    <div class="media-body " ng-repeat="auditLog in AuditLogs">
+                                        <strong>{{auditLog.User.FirstName}}</strong> {{auditLog.EventText}} <strong>{{auditLog.CustomText}}</strong> <small class="text-muted"> {{auditLog.EventDateUTC | timeAgo}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-activity-list">
+
+                                <div class="chat-element" ng-repeat="userComment in UserComments">
+                                    <a href="" class="pull-left">
+                                        <img alt="{{userComment.User.Id}}" class="img-circle" ng-src="{{userComment.User.Photo}}">
+                                    </a>
+
+                                    <div class="media-body ">
+                                        <small class="pull-right text-navy">{{userComment.CommentDate | timeAgo}}</small>
+                                        <strong>{{userComment.User.FirstName}}</strong>
+
+                                        <p class="m-b-xs">
+                                            {{userComment.CommentText}}
+                                        </p>
+                                        <small class="text-muted">{{userComment.CommentDate | date: "MM/dd/yyyy 'at' h:mma"}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-form">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <textarea class="form-control" placeholder="Write a comment..." ng-model="CommentText"></textarea>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-sm btn-primary m-t-n-xs" ng-click="addComment()"><strong>Comment</strong></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

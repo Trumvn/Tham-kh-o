@@ -1,0 +1,161 @@
+﻿<!--
+* INSPINIA - Responsive Admin Theme
+* Version 2.3
+*
+-->
+
+<!DOCTYPE html>
+<html ng-app="inspinia">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title set in pageTitle directive -->
+    <title page-title></title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- Font awesome -->
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Bootstrap and Fonts -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Main Inspinia CSS files -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link id="loadBefore" href="css/style.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet"/>
+    <link href="css/customize.css" rel="stylesheet" />
+
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="css/plugins/image-crop/image-crop-styles.css" rel="stylesheet">
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="css/plugins/datapicker/angular-datapicker.css" rel="stylesheet">
+
+    <!-- Angular Material -->
+    <link href="css/plugins/angular_material/angular-material.min.css" rel="stylesheet">
+
+</head>
+
+<!-- ControllerAs syntax -->
+<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+<body ng-controller="MainCtrl as main" class="md-skin fixed-sidebar fixed-nav {{$state.current.data.specialClass}}" landing-scrollspy id="page-top">
+    <!-- Main view  -->
+    <div ui-view></div>
+
+    <!-- jQuery and Bootstrap -->
+    <script src="js/jquery/jquery-2.1.1.min.js"></script>
+    <script src="js/plugins/jquery-ui/jquery-ui.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- MetsiMenu -->
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- SlimScroll -->
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Peace JS -->
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+
+    <!-- Main Angular scripts -->
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular/angular-sanitize.js"></script>
+    <script src="js/angular/angular-animate.min.js"></script>
+    <script src="js/angular/angular-aria.min.js"></script>
+    <script src="js/angular/angular-messages.min.js"></script>
+    <script src="js/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="js/angular-translate/angular-translate.min.js"></script>
+    <script src="js/ui-router/angular-ui-router.min.js"></script>
+    <script src="js/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="js/plugins/angular-idle/angular-idle.js"></script>
+
+    <script src="js/ngstorage/ngStorage.min.js"></script>
+
+    <!-- Services -->
+    <script src="js/services/AuthService.js"></script>
+    <script src="js/services/AuthInterceptorService.js"></script>
+    <script src="js/services/UserPhotoService.js"></script>
+
+    <!-- Autosave -->
+    <script src="js/plugins/autosave/autoSave.js"></script>
+
+    <!-- Anglar App Script -->
+    <script src="js/app.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="js/commons.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/controllers/loadingCtrl.js"></script>
+    <script src="js/controllers/HeaderCtrl.js"></script>
+    <script src="js/controllers/NavigatorCtrl.js"></script>
+    <script src="js/controllers/proj/ProjectCtrl.js"></script>
+    <script src="js/controllers/proj/ProjectHeaderCtrl.js"></script>
+    <script src="js/controllers/proj/ProjectListCtrl.js"></script>
+    <script src="js/controllers/proj/ProjectCategoryCtrl.js"></script>
+    <script src="js/controllers/proj/ProjectAccountCtrl.js"></script>
+    <script src="js/controllers/proj/ProjectAnalyseCtrl.js"></script>
+    <script src="js/controllers/proj/ProjectSummaryCtrl.js"></script>
+    <script src="js/controllers/proj/ProjectSettingCtrl.js"></script>
+    <script src="js/controllers/DashboardCtrl.js"></script>
+    <script src="js/controllers/FaqCtrl.js"></script>
+    <script src="js/controllers/FaqAdminCtrl.js"></script>
+    <script src="js/controllers/AccountsCtrl.js"></script>
+    <script src="js/controllers/CategoryBudgetCtrl.js"></script>    
+    <script src="js/controllers/UserProfileCtrl.js"></script>
+    <script src="js/controllers/msg/MessagingContentCtrl.js"></script>
+    <script src="js/controllers/msg/MessagingMailComposeCtrl.js"></script>
+    <script src="js/controllers/msg/MessagingMailInboxCtrl.js"></script>
+    <script src="js/controllers/msg/MessagingMailViewCtrl.js"></script>
+    <script src="js/controllers/msg/MessagingTemplateEditCtrl.js"></script>
+    <script src="js/controllers/msg/MessagingTemplateListCtrl.js"></script>
+    <script src="js/controllers/msg/MessagingTemplateViewCtrl.js"></script>
+    <script src="js/controllers/admin/AdminContentCtrl.js"></script>
+    <script src="js/controllers/admin/ClientsCtrl.js"></script>
+    <script src="js/controllers/admin/ProjectsCtrl.js"></script>
+    <script src="js/controllers/admin/ClientProfileCtrl.js"></script>
+    <script src="js/controllers/admin/ProjectViewCtrl.js"></script>
+    <script src="js/controllers.js"></script>
+
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="js/plugins/sweetalert/angular-sweetalert.min.js"></script>
+    <script src="js/plugins/angularSpinners/angular-spinners.min.js"></script>
+    <script src="js/plugins/image-crop/image-crop.js"></script>
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+    <script src="js/plugins/datapicker/angular-datepicker.js"></script>
+    <!-- TimeAgo -->
+    <script src="js/plugins/timeago/angular-timeago.js"></script>
+
+    <!-- isoCurrency -->
+    <script src="js/plugins/isoCurrency/isocurrency.common.js"></script>
+    <script src="js/plugins/isoCurrency/isocurrency.js"></script>
+
+    <!-- Angular material -->
+    <script src="js/plugins/angular_material/angular-material.min.js"></script>
+
+    <!-- Angular Google Chart -->
+    <script src="js/plugins/angular-google-chart/ng-google-chart.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l; b[l] || (b[l] =
+            function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
+            e = o.createElement(i); r = o.getElementsByTagName(i)[0];
+            e.src = 'https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');
+    </script>
+</body>
+</html>

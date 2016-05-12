@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5886FFF7-4AAD-4BC7-91D6-BE37B110860F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AsiaMoneyer.AppServices</RootNamespace>
+    <AssemblyName>AsiaMoneyer.AppServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.LoggingFacility.3.3.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.Log4netIntegration, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core-log4net.3.3.3\lib\net45\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\Dtos\AccountBindingModels.cs" />
+    <Compile Include="Account\Dtos\ClaimBindingModel.cs" />
+    <Compile Include="Account\Dtos\RoleBindingModels.cs" />
+    <Compile Include="Account\Dtos\RoleReturnModel.cs" />
+    <Compile Include="Account\Dtos\UserReturnModel.cs" />
+    <Compile Include="Application\ApplicationAppService.cs" />
+    <Compile Include="Application\IApplicationAppService.cs" />
+    <Compile Include="AppServiceBase.cs" />
+    <Compile Include="AuditLogs\AuditLogAppService.cs" />
+    <Compile Include="AuditLogs\Dtos\AuditLogDto.cs" />
+    <Compile Include="AuditLogs\IAuditLogAppService.cs" />
+    <Compile Include="Client\BillingAppService.cs" />
+    <Compile Include="Client\ClientAppService.cs" />
+    <Compile Include="Client\Dtos\GetClientsDto.cs" />
+    <Compile Include="Client\Dtos\InvoiceDto.cs" />
+    <Compile Include="Client\Dtos\PaymentMethodDto.cs" />
+    <Compile Include="Client\Dtos\PaymentObjectDto.cs" />
+    <Compile Include="Client\Dtos\ProductDto.cs" />
+    <Compile Include="Client\Dtos\ProductPriceDto.cs" />
+    <Compile Include="Client\Dtos\SubscriptionDto.cs" />
+    <Compile Include="Client\Dtos\SubscriptionTypeDto.cs" />
+    <Compile Include="Client\Dtos\TargetMarket.cs" />
+    <Compile Include="Client\Dtos\UserDto.cs" />
+    <Compile Include="Client\Dtos\ClientDto.cs" />
+    <Compile Include="Client\IBillingAppService.cs" />
+    <Compile Include="Client\IClientAppService.cs" />
+    <Compile Include="Client\ISubscriptionAppService.cs" />
+    <Compile Include="Client\SubscriptionAppService.cs" />
+    <Compile Include="EventBus\EventPublisher.cs" />
+    <Compile Include="EventBus\EventSubscriptions.cs" />
+    <Compile Include="EventBus\NotifyAuditLog.cs" />
+    <Compile Include="EventBus\TransactionChangedEvent.cs" />
+    <Compile Include="Faq\Dtos\FaqDto.cs" />
+    <Compile Include="Faq\FaqAppService.cs" />
+    <Compile Include="Faq\IFaqAppService.cs" />
+    <Compile Include="Messaging\AutoMessagingDatabindingHelperAppService.cs" />
+    <Compile Include="Messaging\AutoMessagingMessageAppService.cs" />
+    <Compile Include="Messaging\AutoSmptEmailMessage.cs" />
+    <Compile Include="Messaging\Dtos\AutoMessagingMessageDto.cs" />
+    <Compile Include="Messaging\Dtos\AutoMessagingTemplateDto.cs" />
+    <Compile Include="Messaging\Dtos\GetTemplateContentListDto.cs" />
+    <Compile Include="Messaging\Dtos\GetMessageDto.cs" />
+    <Compile Include="Messaging\Dtos\GetMessagingTemplateDto.cs" />
+    <Compile Include="Messaging\Dtos\TemplateContentDto.cs" />
+    <Compile Include="Messaging\IAutoMessagingAppService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messaging\IAutoMessagingDatabindingHelperAppService.cs" />
+    <Compile Include="Messaging\IAutoMessagingMessageAppService.cs" />
+    <Compile Include="Messaging\MessagingInstantAppService.cs" />
+    <Compile Include="Messaging\GoogleEmailProvider.cs" />
+    <Compile Include="Messaging\IAutoMailMessage.cs" />
+    <Compile Include="Messaging\IMessagingProvider.cs" />
+    <Compile Include="Messaging\MessagingQueueAppService.cs" />
+    <Compile Include="Project\AccountAppService.cs" />
+    <Compile Include="Project\CategoryAppService.cs" />
+    <Compile Include="Project\Dtos\AccountDto.cs" />
+    <Compile Include="Project\Dtos\BudgetSumDto.cs" />
+    <Compile Include="Project\Dtos\CategoryBudgetDto.cs" />
+    <Compile Include="Project\Dtos\CategoryDto.cs" />
+    <Compile Include="Application\Dtos\DashboardProjectDto.cs" />
+    <Compile Include="Application\Dtos\NavigatorDto.cs" />
+    <Compile Include="Application\Dtos\NavigatorProjectDto.cs" />
+    <Compile Include="Project\Dtos\InviteMemberDto.cs" />
+    <Compile Include="Project\Dtos\PagingDto.cs" />
+    <Compile Include="Project\Dtos\ProjectAccountDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\Dtos\ProjectAnalyseInformationDto.cs" />
+    <Compile Include="Project\Dtos\ProjectDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\Dtos\GetProjectOutput.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\Dtos\ProjectFilterDto.cs" />
+    <Compile Include="Project\Dtos\ProjectHeaderDto.cs" />
+    <Compile Include="Project\Dtos\ProjectMemberDto.cs" />
+    <Compile Include="Project\Dtos\ProjectSummaryDto.cs" />
+    <Compile Include="Project\Dtos\SearchResultProjectDto.cs" />
+    <Compile Include="Project\Dtos\ProjectSearchOutput.cs" />
+    <Compile Include="Project\Dtos\RecurringTransactionDto.cs" />
+    <Compile Include="Project\Dtos\RecurringTransactionSubmitDto.cs" />
+    <Compile Include="Project\Dtos\TimeFrequencyDto.cs" />
+    <Compile Include="Project\Dtos\TransactionDto.cs" />
+    <Compile Include="Project\Dtos\TransactionFilterDto.cs" />
+    <Compile Include="Project\Dtos\TransactionSumDto.cs" />
+    <Compile Include="Project\Dtos\TransferMoneyDto.cs" />
+    <Compile Include="Project\IAccountAppService.cs" />
+    <Compile Include="Project\ICategoryAppService.cs" />
+    <Compile Include="Project\IRecurringTransactionAppService - Copy.cs" />
+    <Compile Include="Project\ITransactionAppService.cs" />
+    <Compile Include="Project\ProjectAppService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\IProjectAppService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mapping\AutoMapper.cs" />
+    <Compile Include="Mapping\ModelFactory.cs" />
+    <Compile Include="Project\RecurringTransactionAppService - Copy.cs" />
+    <Compile Include="Project\TransactionAppService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemSettings\ISysSettingAppService.cs" />
+    <Compile Include="SystemSettings\SysSettingAppService.cs" />
+    <Compile Include="UserComments\Dtos\UserCommentDto.cs" />
+    <Compile Include="UserComments\IUserCommentAppService.cs" />
+    <Compile Include="UserComments\UserCommentAppService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AsiaMoneyer.Base\AsiaMoneyer.Base.csproj">
+      <Project>{13f9bf8c-9bef-4b6c-afab-aca9ae57e7ec}</Project>
+      <Name>AsiaMoneyer.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.Commons\AsiaMoneyer.Commons.csproj">
+      <Project>{b63a038f-7b97-4af9-83c2-2a5026154cbd}</Project>
+      <Name>AsiaMoneyer.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.Core\AsiaMoneyer.Core.csproj">
+      <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
+      <Name>AsiaMoneyer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.Entities\AsiaMoneyer.Entities.csproj">
+      <Project>{17560453-6560-4e64-ae7a-668ed4034f35}</Project>
+      <Name>AsiaMoneyer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.EntityFramework\AsiaMoneyer.EntityFramework.csproj">
+      <Project>{3979f157-deb0-4878-ab1d-4cef6b5a1300}</Project>
+      <Name>AsiaMoneyer.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.Infrastructure\AsiaMoneyer.Infrastructure.csproj">
+      <Project>{5d315df3-9106-471a-9054-5be581157ad8}</Project>
+      <Name>AsiaMoneyer.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsiaMoneyer.Security\AsiaMoneyer.Security.csproj">
+      <Project>{0edd8f13-2f4b-4312-bf28-e3f2756a2f75}</Project>
+      <Name>AsiaMoneyer.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

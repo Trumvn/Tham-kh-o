@@ -1,0 +1,42 @@
+﻿<div ng-controller="ProjectHeaderCtrl" ng-init="onload()">
+    <div class="col-lg-9">
+        <h2>{{CurrentProject.ProjectTitle}}&nbsp;
+				<span class="text-muted text-lock-unlock" ng-switch="CurrentProject.IsPrivate">
+					<i class="fa fa-lock" ng-switch-when="true"></i>
+                    <i class="fa fa-unlock text-info" ng-switch-default></i>
+				</span>
+		</h2>
+        <ol class="breadcrumb">
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.list({id:CurrentProject.Id})"><span class="nav-label"><i class="fa fa-caret-right"></i>List</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.category({id:CurrentProject.Id})"><span class="nav-label"><i class="fa fa-caret-right"></i>Category</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.account({id:CurrentProject.Id})"><span class="nav-label"><i class="fa fa-caret-right"></i>Account </span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.analyse({id:CurrentProject.Id})"><span class="nav-label"><i class="fa fa-caret-right"></i>Analyse </span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.summary({id:CurrentProject.Id})"><span class="nav-label"><i class="fa fa-caret-right"></i>Summary </span></a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-3">
+		<div class="team-members-block">
+			<div class="team-members">
+                <a href="#" ng-repeat="member in EmptyMembers" class="ava-mem-block pull-right">
+                    <span></span>
+                </a>
+                <a href="#" ng-repeat="member in Members" class="ava-mem-block pull-right">
+                    <img ng-show="member.Client.User.Photo != null" alt="{{member.Client.User.Id}}" title="{{member.Client.User.FirstName}}" class="img-circle" style="width: 30px; height: 30px;" ng-src="{{member.Client.User.Photo}}">
+                    <span ng-show="member.Client.User.Photo == null"></span>
+                </a>
+			</div>
+			<div class="clr"></div>
+			<h4 ng-class="{'text-info':CurrentProject.CurrentBalance >= 0,'text-danger':CurrentProject.CurrentBalance < 0}">{{CurrentProject.CurrentBalance | isoCurrency:CurrentProject.Currency}}&nbsp;</h4>
+		</div>
+    </div>
+</div>

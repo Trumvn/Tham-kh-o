@@ -1,0 +1,6 @@
+D:\Work\dev1\AsiaMoneyer.WebApp\bin\AsiaMoneyer.WebApp.dll.config
+D:\Work\dev1\AsiaMoneyer.WebApp\bin\AsiaMoneyer.WebApp.dll
+D:\Work\dev1\AsiaMoneyer.WebApp\bin\AsiaMoneyer.WebApp.pdb
+D:\Work\dev1\AsiaMoneyer.WebApp\obj\Debug\AsiaMoneyer.WebApp.dll
+D:\Work\dev1\AsiaMoneyer.WebApp\obj\Debug\AsiaMoneyer.WebApp.pdb
+D:\Work\dev1\AsiaMoneyer.WebApp\obj\Debug\AsiaMoneyer.WebApp.csprojResolveAssemblyReference.cache

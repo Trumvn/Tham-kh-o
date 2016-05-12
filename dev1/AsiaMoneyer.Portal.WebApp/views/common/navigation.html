@@ -1,0 +1,50 @@
+<nav class="navbar-default navbar-static-side" role="navigation" ng-controller="NavigatorCtrl" ng-init="onload()">
+    <div class="sidebar-collapse" full-scroll>
+        <span close-off-canvas></span>
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element" dropdown>
+                    <img alt="image" src="img/asiamoneyer-logo.png" />
+                    <a class="dropdown-toggle" ui-sref="app.dashboard">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">My Dashboard</strong>
+                            </span>
+                            <span class="text-muted text-xs block mtop_2">Setting</span>
+                            <span class="text-muted text-xs block mtop_2">&nbsp;</span>
+                            <span class="text-muted text-xs block mtop_2">&nbsp;</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="logo-element">
+                    <img alt="image" class="img-circle" src="img/asiamoneyer-logo-small.png" />
+                </div>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.admin.projects"><i class="fa fa-diamond"></i> <span class="nav-label">Projects</span> <span class="label label-warning pull-right">16/24</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.admin.clients"><i class="fa fa-users"></i> <span class="nav-label">Clients</span> </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.msg.mail_inbox"><i class="fa fa-envelope"></i> <span class="nav-label">Messaging</span> <span class="label label-warning pull-right">16/24</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.faqadmin"><i class="fa fa-question"></i> <span class="nav-label">FAQ</span> </a>
+            </li>
+            <li ng-class="{active: $state.includes('report')}">
+                <a ui-sref="metrics"><i class="fa fa-pie-chart"></i> <span class="nav-label">Report</span> </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('mailbox')}">
+                    <li ui-sref-active="active"><a ui-sref="mailbox.inbox">Inbox</a></li>
+                    <li ui-sref-active="active"><a ui-sref="mailbox.email_view">Email view</a></li>
+                    <li ui-sref-active="active"><a ui-sref="mailbox.email_compose">Compose email</a></li>
+                    <li ui-sref-active="active"><a ui-sref="mailbox.email_template">Email template</a></li>
+                </ul>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.faqadmin"><i class="fa fa-cogs"></i> <span class="nav-label">Configuration</span> </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
